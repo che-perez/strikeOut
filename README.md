@@ -10,10 +10,10 @@
 ## Wireframe 
 
 
-[Menu](Screen Shot 2017-10-06 at 2.41.56 PM.png)
-[Pitch](Screen Shot 2017-10-06 at 2.42.37 PM.png)
-[Hit](Screen Shot 2017-10-06 at 2.42.50 PM.png)
-[Scores](Screen Shot 2017-10-06 at 2.43.06 PM.png)
+[Menu](menu.png)
+[Pitch](pitch.png)
+[Hit](hit.png)
+[Scores](scores.png)
 
 
 ## Initial thoughts on game structure. 
@@ -25,7 +25,9 @@
 
 
 
-## Phases of Completion (The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.) 
+## Phases of Completion 
+
+(The steps or phases you expect to go through, and the tasks that you'll need to accomplish to reach each step. These should resemble the acceptance criteria we were working through earlier.) 
 
 
 
