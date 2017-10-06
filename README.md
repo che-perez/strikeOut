@@ -10,10 +10,10 @@
 ## Wireframe 
 
 
-[Menu](menu.png)
-[Pitch](pitch.png)
-[Hit](hit.png)
-[Scores](scores.png)
+![Menu](menu.png)
+![Pitch](pitch.png)
+![Hit](hit.png)
+![Scores](scores.png)
 
 
 ## Initial thoughts on game structure. 
