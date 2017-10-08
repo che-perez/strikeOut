@@ -1,0 +1,29 @@
+html{
+ overflow-y: hidden;
+}
+
+
+.park{
+   width: 100vw;
+   height: 100vh;
+    border: 2px solid black;
+ background-image: url(pitch.png);
+ transform: perspective(1000px)scaleZ(2)rotateX(45deg);
+}
+
+.ball {
+ max-width: 50px;
+ max-height: 50px;
+ position: absolute;
+ z-index: 1;
+}
+
+.bat{
+     position: absolute;
+/*
+    background-image: url(batAsh.png);
+      background-repeat: no-repeat;
+      background-size: 100px;
+*/
+ background-color: burlywood;
+}
