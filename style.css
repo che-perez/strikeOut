@@ -1,25 +1,41 @@
 html{
  overflow-y: hidden;
+ background-image: url(park.jpg);
+ background-position: center;
+ background-size: cover;
 }
 
 
 .park{
    width: 100vw;
    height: 100vh;
-    border: 2px solid black;
+/*    border: 2px solid black;*/
+      position: relative;
+     top: 200px;
+ z-index: -1;
+/*
  background-image: url(pitch.png);
  transform: perspective(1000px)scaleZ(2)rotateX(45deg);
+*/
 }
 
 .ball {
+ top: 300px;
+ left: 700px;
  max-width: 50px;
  max-height: 50px;
  position: absolute;
- z-index: 1;
+ background-color: red;
+ border-radius: 100%; 
 }
 
 .bat{
      position: absolute;
+      width: 30px;
+ max-width: 150px;
+ height: 150px;
+ top: 650px;
+ left: 650px;
 /*
     background-image: url(batAsh.png);
       background-repeat: no-repeat;
