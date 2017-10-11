@@ -1,6 +1,7 @@
 var ball = document.getElementById("ball");
 var bat = document.getElementById("bat");
 var hr = document.getElementById("hr");
+var eye = document.getElementById("eye");
 
 var batW = bat.offsetWidth;
 var batH = bat.offsetHeight;
@@ -10,6 +11,7 @@ var ballW = ball.offsetWidth;
 var ballH = ball.offsetHeight;
 var ballX = ball.offsetLeft;
 var ballY = ball.offsetTop;
+var eyeY = eye.offsetTop;
 
 var points = 0;
 hr.innerHTML = points;
@@ -69,15 +71,19 @@ window.onload = function(){
     var mv = setInterval(move, 5);
   
   function move(){
-   if(ballY === batY){
+   if(ballY === (eyeY)){
     clearInterval(mv);
-    
        if((ballX+ballW) > batX && ballX < (batX+batW) && (ballY+ballH) > batY && ballY < (batY+batH)){
         console.log("detected");
         hit();
        }
-   } else {
-  ball.style.top = (ballY += 1) + 'px';
+   } 
+    else if(batW > 100 && ballY < (eyeY - 50)){
+      clearInterval(mv)
+     }
+   
+   else {
+  ball.style.top = (ballY += .5) + 'px';
     console.log(ballY);
   ball.style.width = (ballW += .1) + 'px';
   ball.style.height = (ballH += .1) + 'px';
@@ -93,10 +99,14 @@ window.onload = function(){
           hr.innerHTML = points;
           localStorage.setItem('puntos', points);
    } else {
+    var rand = Math.floor(Math.random()* 3);
+    
+    if(rand == 1){
   ball.style.top = (ballY -= 1) + 'px';
     console.log(ballY);
   ball.style.width = (ballW -= .1) + 'px';
   ball.style.height = (ballH -= .1) + 'px';
+    }
    }
  }
   }
@@ -130,8 +140,10 @@ document.addEventListener("keydown",controls);
 function controls(evt) {
     switch(evt.keyCode) {
         case 32:
+//              bat.style.animation = "swing 1s"
               bat.style.width = (batW += 120) + "px";
               bat.style.height = (batH -= 120) + "px"
+//      bat.style.transform = "rotate(90deg)";
             break;
     }
 }
