@@ -5,7 +5,17 @@ html{
  background-repeat: no-repeat;
 }
 
-
+.screen{
+ width: 100vw;
+ height: 100vh;
+ background-image: url(screen.jpg);
+ background-size: contain;
+ background-position: center;
+ background-repeat: no-repeat;
+ position: absolute;
+ z-index: 999;
+ 
+}
 .park{
  width: 100vw;
  height: 100vh;
