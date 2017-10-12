@@ -2,7 +2,9 @@ var ball = document.getElementById("ball");
 var bat = document.getElementById("bat");
 var hr = document.getElementById("hr");
 var eye = document.getElementById("eye");
-
+var strike1 = document.getElementById("st1");
+var strike2 = document.getElementById("st2");
+var strike3 = document.getElementById("st3");
 var batW = bat.offsetWidth;
 var batH = bat.offsetHeight;
 var batX = bat.offsetLeft;
@@ -12,74 +14,71 @@ var ballH = ball.offsetHeight;
 var ballX = ball.offsetLeft;
 var ballY = ball.offsetTop;
 var eyeY = eye.offsetTop;
+ var strikeCount = 0;
 
 var points = 0;
 hr.innerHTML = points;
-//var wood = {
-// width: 100,
-// height: 100,
-// posX: 50,
-// posY: 400,
-// color: "burlywood",
-// radius: 50
-//};
-//bat.style.width = wood.width + "px";
-//bat.style.height = wood.height + "px";
-//bat.style.top = wood.posY + "px";
-//bat.style.left = wood.posX + "%";
 
-//function Balls(w,h,x,y,color,radius){
-//  this.w = w;
-//  this.h = h;
-//  this.x = x;
-//  this.y = y;
-//  this.color = color;
-// this.radius = radius;
-//}
-//
-//var ball1 = new Balls(5,5,50,100,"red",100);
-// ball.style.width = ball1.w + "px";
-// ball.style.height = ball1.h + "px";
-// ball.style.top = ball1.y + "px";
-// ball.style.left = ball1.x + "%";
-// ball.style.background = ball1.color;
-// ball.style.borderRadius = ball1.radius + "%";
-
-window.onload = function(){
+ window.onload =
+ function idk(){
  if(localStorage.getItem('puntos')){
    hr.innerHTML = localStorage.getItem('puntos');
    points = parseInt(localStorage.getItem("puntos"));
  } else {localStorage.setItem('puntos', 0);}
-//     var pos = ballY;
-//     var w = ballW;
-//     var h = ballH;
-//     var id = setInterval(frame, 5);
-//     function frame() {
-//         if(pos === batY) {
-//             clearInterval(id);
-//          console.log(ballY);
-//           } else {
-//                pos++;
-//                h+=.1;
-//                w+=.1;
-//                ball.style.top = (ball.offsetTop += pos) + 'px';
-//                ball.style.width = w + 'px';
-//                ball.style.height = h + 'px';
-//            }
-//     }
- 
-    var mv = setInterval(move, 5);
   
-  function move(){
+  
+        ball.style.top = (ballY = 450) + 'px';
+       ball.style.left = (ballX = 700) + 'px';
+       ball.style.width = (ballW = 0) + 'px';
+       ball.style.height = (ballH = 0) + 'px';
+        bat.style.width = (batW = 75) + "px";
+        bat.style.height = (batH = 250) + "px"
+        bat.style.transform = "none";
+  
+  
+    var mv = setInterval(pitch, 5);
+  
+  function pitch(){
    if(ballY === (eyeY)){
-    clearInterval(mv);
-       if((ballX+ballW) > batX && ballX < (batX+batW) && (ballY+ballH) > batY && ballY < (batY+batH)){
-        console.log("detected");
-        hit();
-       }
+       if(strikeCount == 0) {
+        strikeCount += 1;
+     strike1.style.opacity = "1";
+        console.log("strikee" +strikeCount);
+        document.getElementById('strike').play();
+     } else if(strikeCount == 1){
+      strikeCount += 1;
+       strike2.style.opacity = "1";
+      console.log("strikee" +strikeCount);
+      document.getElementById('strike').play();
+     } else if(strikeCount == 2){
+       strike3.style.opacity = "1";
+        document.getElementById('out').play();
+      alert("You're Out!!!!!");
+       clearInterval(mv);
+     setTimeout(reset,1000);
+     }
+    setTimeout(idk, 1000);
    } 
-    else if(batW > 100 && ballY < (eyeY - 50)){
-      clearInterval(mv)
+    else if(batW > 100 && ballY < (eyeY - 100)){
+     if(strikeCount == 0) {
+     strike1.style.opacity = "1";
+      console.log("strikee" +strikeCount);
+      strikeCount++;
+      document.getElementById('strike').play();
+     } else if(strikeCount == 1){
+       strikeCount++;
+       strike2.style.opacity = "1";
+      console.log("strikee" +strikeCount);
+      document.getElementById('strike').play();
+     } else if(strikeCount == 2){
+       strike3.style.opacity = "1";
+      document.getElementById('out').play();
+      alert("You're Out!!!!!");
+       clearInterval(mv);
+     setTimeout(reset,1000);
+     }
+     clearInterval(mv);
+     setTimeout(idk,1000);
      }
    
    else {
@@ -88,54 +87,64 @@ window.onload = function(){
   ball.style.width = (ballW += .1) + 'px';
   ball.style.height = (ballH += .1) + 'px';
    }
+       if((ballX+ballW) > batX && ballX < (batX+batW) && (ballY+ballH) > batY && ballY < (batY+batH)){
+        console.log("detected");
+        document.getElementById('hit').play();
+        clearInterval(mv);
+        hit();
+       }
  }
  
+    var rand = Math.floor(Math.random()* 3);
   function hit(){
    var mv = setInterval(move, 5);
     function move(){
-   if(ballY === -1){
+   if(ballY === 100){
         clearInterval(mv);
         points++;
           hr.innerHTML = points;
           localStorage.setItem('puntos', points);
+    if(points == 763){
+     alert("YOU ARE THE NEW HOME RUN KING");
+     document.querySelector("body").style.background = "black";
+     
+    }
+    idk();
+    // what actions will help me rest state to go back to batting
    } else {
-    var rand = Math.floor(Math.random()* 3);
-    
-    if(rand == 1){
-  ball.style.top = (ballY -= 1) + 'px';
-    console.log(ballY);
-  ball.style.width = (ballW -= .1) + 'px';
-  ball.style.height = (ballH -= .1) + 'px';
+      if(rand == 0){
+         ball.style.top = (ballY -= 1) + 'px';
+        ball.style.left = (ballX -= 1) + 'px';
+         ball.style.width = (ballW -= .1) + 'px';
+       ball.style.height = (ballH -= .1) + 'px';
+    } else if(rand == 1){
+       ball.style.top = (ballY -= 1) + 'px';
+       console.log(ballY);
+       ball.style.width = (ballW -= .1) + 'px';
+       ball.style.height = (ballH -= .1) + 'px';
+    } else if (rand == 2){
+     ball.style.top = (ballY -= 1) + 'px';
+     ball.style.left = (ballX += 1) + 'px';
+     ball.style.width = (ballW -= .1) + 'px';
+       ball.style.height = (ballH -= .1) + 'px';
     }
    }
  }
   }
+  
+  function reset(){
+   strikeCount = 0;
+   localStorage.setItem('puntos', 0);
+   strike1.style.opacity = "0";
+   strike2.style.opacity = "0";
+   strike3.style.opacity = "0";
+   idk();
+  }
  
 }
-//function hit(){
-//     var pos = ballY;
-//     var w = ballW;
-//     var h = ballH;
-//     var id = setInterval(frame, 5);
-//     function frame() {
-//         if(pos === -1) {
-//             clearInterval(id);
-//             points++;
-//               hr.innerHTML = points;
-//            localStorage.setItem('puntos', points);
-//      console.log(window.localStorage.getItem("puntos"));
-//               document.location.reload(true);
-//               } else {
-//                pos--;
-//                h-=.5;
-//                w-=.5;
-//                ball.style.top = pos + 'px';
-//                ball.style.width = w + 'px';
-//                ball.style.height = h + 'px';
-//            }
-//     }
-//}
 
+ document.getElementById("ballgame").play();
+ 
 document.addEventListener("keydown",controls);
 function controls(evt) {
     switch(evt.keyCode) {
@@ -143,7 +152,7 @@ function controls(evt) {
 //              bat.style.animation = "swing 1s"
               bat.style.width = (batW += 120) + "px";
               bat.style.height = (batH -= 120) + "px"
-//      bat.style.transform = "rotate(90deg)";
+               bat.style.transform = "rotate(90deg)";
             break;
     }
 }

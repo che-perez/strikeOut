@@ -1,28 +1,22 @@
 html{
  overflow-y: hidden;
- background-image: url(park_1024.png);
- background-size: contain;
- background-position: center;
+  background-image: url(ivy.jpg);
+ background-size: cover;
  background-repeat: no-repeat;
- 
 }
 
 
 .park{
-   width: 100vw;
-   height: 100vh;
-/*    border: 2px solid black;*/
-      position: relative;
-     top: 200px;
- z-index: -1;
-/*
- background-image: url(pitch.png);
- transform: perspective(1000px)scaleZ(2)rotateX(45deg);
-*/
+ width: 100vw;
+ height: 100vh;
+ background-image: url(park_1024.png);
+ background-size: contain;
+ background-position: center;
+ background-repeat: no-repeat;
 }
 
 .ball {
- top: 200px;
+ top: 450px;
  left: 700px;
  max-width: 75px;
  max-height: 75px;
@@ -31,11 +25,11 @@ html{
 
 .bat{
      position: absolute;
-      width: 50px;
+      width: 75px;
  max-width: 150px;
  height: 250px;
- top: 300px;
- left: 550px;
+ top: 550px;
+ left: 40%;
 }
 
 .batters{
@@ -44,16 +38,35 @@ html{
  border: 2px solid black;
  position: relative;
  left: 46%;
- top: 400px;
+ top: 600px;
 }
 
-
-@keyframes swing{
- from {
-  transform: rotate(0deg);
- }
- 
- to{
-  transform: rotate(-180deg);
- }
+.strikes{
+ width: 20px;
+ height: 15px;
+ background-image: radial-gradient( red 50%, darkred 50%);
+ position: relative;
+ display: inline-block;
+ margin: -5px;
+ left: 49%;
+ top: 269px;
+ z-index: -1;
 }
+#st1{
+ opacity: 0;
+}
+#st2{
+ opacity: 0;
+}
+#st3{
+ opacity: 0;
+}
+
+.hr{
+ position: absolute;
+ font-family: helvetica;
+ font-size: 30px;
+ background-color: rgba(0,0,0,.5);
+ text-align: center;
+ color: yellow;
+ }
